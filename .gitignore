@@ -1,0 +1,7 @@
+venv/
+
+__pycache__/
+
+fixtures/db.json
+
+fixtures/old/

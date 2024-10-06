@@ -1,0 +1,94 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Список мультсериалов{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/cartoons.css' %}">
+    <script src="{% static 'main/js/cartoons.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+<main>
+    <span class="page-heading">Список мультсериалов</span>
+    <div class="min-header">
+        <!-- <p>Список мультфильмов</p> #fecb63 -->
+        
+        <div class="sortbyblock">
+            <p style="margin-right: 10px;">Сортировать по:</p>
+            <div class="sortopt">
+                <button data-sort-value="" data-sort-dir="" id="sort" onclick="showSortSelect()">
+                    <div>
+                        <span class="sort-typename">Рейтингу</span>
+                        <span class="sort-typedir"><img src="{% static 'main/icons/arrow.svg' %}" alt=""></span>    
+                    </div>
+                </button>
+                
+                <div class="hiddenopt">
+                    <button class="sbtn" data-sort-type="rating">Рейтингу</button>
+                    <button class="sbtn" data-sort-type="popularity">Популярности</button>
+                    <button class="sbtn" data-sort-type="release">Дате выхода</button>
+                    <button class="sbtn" data-sort-type="title">Названию</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-cartoon-btn">
+            <a href="/editor/addcartoon/">Добавить мультсериал</a>
+        </div>
+    </div>
+ 
+    <section class="content">
+        <div class="cartoons-content">
+
+            {% include 'main/cartoons_only.html' %}
+
+        </div>
+
+        <div class="open-filter-bar">
+            <span>Открыть бар</span>
+        </div>
+
+        <aside class="filter-setting">
+            <div style="display: flex; margin-bottom: 10px;">
+                <p onclick="resetFilters()" class="reset-filters">Сбросить фильтры</p>
+            </div>
+
+            <div class="f-status f-block">
+                <span class="heading">Статус</span>
+
+                {% for i in c_status %}
+                <label class="f-line" for="{{i.eng_name}}">
+                    <input type="checkbox" data-filtertype="status" id="{{i.eng_name}}">
+                    <span>{{i}}</span>
+                </label>
+                {% endfor %}
+            </div>
+
+            <div class="f-type f-block">
+                <span class="heading">Тип</span>
+
+                {% for i in c_types %}
+                <label class="f-line" for="{{i.eng_name}}">
+                    <input type="checkbox" data-filtertype="type" id="{{i.eng_name}}">
+                    <span>{{i}}</span>
+                </label>
+                {% endfor %}
+            </div>
+
+            <div class="f-genre f-block">
+                <span class="heading">Жанры</span>
+                
+                {% for i in c_genres %}
+                <label class="f-line" for="{{i.eng_name}}">
+                    <input type="checkbox" data-filtertype="genres" id="{{i.eng_name}}">
+                    <span>{{i}}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </aside>
+    </section>
+</main>
+{% endblock %}

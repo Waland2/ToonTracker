@@ -1,0 +1,505 @@
+[
+{
+    "model": "main.cartoons",
+    "pk": 5,
+    "fields": {
+        "eng_title": "What the Family",
+        "rus_title": "Объяснялкины",
+        "description": "Они продались стримингу, но остались верны себе. Мультсериал для взрослых от Егора Лоскутова и Сыендука",
+        "type": 1,
+        "status": 2,
+        "rating": 7.0,
+        "number_of_ratings": 1,
+        "start_year": "2023-10-19",
+        "end_year": null,
+        "number_of_seasons": 1,
+        "number_of_series": 8,
+        "cover": "covers/what-a-family.jpg",
+        "is_published": true,
+        "age_restrictions": null,
+        "creators": null,
+        "genres": [
+            8
+        ],
+        "studios": [
+            6
+        ]
+    }
+},
+{
+    "model": "main.cartoons",
+    "pk": 6,
+    "fields": {
+        "eng_title": "Hazbin Hotel",
+        "rus_title": "Отель Хазбин",
+        "description": "В попытке найти ненасильственную альтернативу для уменьшения перенаселенности Ада дочь Люцифера открывает реабилитационный отель, который предлагает группе демонов-неудачников шанс на искупление.",
+        "type": 1,
+        "status": 2,
+        "rating": 7.0,
+        "number_of_ratings": 1,
+        "start_year": "2024-01-19",
+        "end_year": null,
+        "number_of_seasons": 1,
+        "number_of_series": 10,
+        "cover": "covers/hazbinhotel.jpg",
+        "is_published": true,
+        "age_restrictions": null,
+        "creators": null,
+        "genres": [
+            8,
+            10,
+            11,
+            16
+        ],
+        "studios": [
+            7
+        ]
+    }
+},
+{
+    "model": "main.cartoons",
+    "pk": 7,
+    "fields": {
+        "eng_title": "The Nightmare Before Christmas",
+        "rus_title": "Кошмар перед Рождеством",
+        "description": "В царстве Хэллоуин, царстве страхов и кошмаров, живут мертвецы, уродцы, чудовища во главе с царем ужасов Джеком Скеллингтоном. Под рождество Джек случайно попадает в город Рождества, где узнает, что где-то есть радость, добро и веселье.",
+        "type": 2,
+        "status": 1,
+        "rating": 7.0,
+        "number_of_ratings": 1,
+        "start_year": "1993-10-29",
+        "end_year": null,
+        "number_of_seasons": null,
+        "number_of_series": null,
+        "cover": "covers/nightmarebeforechristmas.jpg",
+        "is_published": true,
+        "age_restrictions": null,
+        "creators": null,
+        "genres": [
+            10,
+            11
+        ],
+        "studios": [
+            8
+        ]
+    }
+},
+{
+    "model": "main.cartoons",
+    "pk": 8,
+    "fields": {
+        "eng_title": "Coraline",
+        "rus_title": "Коралина в Стране Кошмаров",
+        "description": "Бродя по своему ветхому дому в скучном ньютауне, 11-летняя Коралина обнаруживает потайную дверь в странно идеализированную версию своей жизни. Чтобы остаться в мире фантазий, она должна принести пугающе реальную жертву.",
+        "type": 2,
+        "status": 1,
+        "rating": 7.0,
+        "number_of_ratings": 1,
+        "start_year": "2009-02-06",
+        "end_year": null,
+        "number_of_seasons": 1,
+        "number_of_series": 1,
+        "cover": "covers/caroline.jpg",
+        "is_published": true,
+        "age_restrictions": null,
+        "creators": null,
+        "genres": [
+            6,
+            15
+        ],
+        "studios": [
+            9
+        ]
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 1,
+    "fields": {
+        "name": "Вестерн",
+        "eng_name": "Western",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 2,
+    "fields": {
+        "name": "Военный",
+        "eng_name": "Military",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 3,
+    "fields": {
+        "name": "Детектив",
+        "eng_name": "Detective",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 4,
+    "fields": {
+        "name": "Детский",
+        "eng_name": "Сhildrens",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 5,
+    "fields": {
+        "name": "Документальный",
+        "eng_name": "Documentary",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 6,
+    "fields": {
+        "name": "Драма",
+        "eng_name": "Drama",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 7,
+    "fields": {
+        "name": "Исторический",
+        "eng_name": "Historical",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 8,
+    "fields": {
+        "name": "Комедия",
+        "eng_name": "Comedy",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 9,
+    "fields": {
+        "name": "Криминал",
+        "eng_name": "Crime",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 10,
+    "fields": {
+        "name": "Мюзикл",
+        "eng_name": "Musical",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 11,
+    "fields": {
+        "name": "Приключения",
+        "eng_name": "Adventure",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 12,
+    "fields": {
+        "name": "Триллер",
+        "eng_name": "Thriller",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 13,
+    "fields": {
+        "name": "Хоррор",
+        "eng_name": "Horror",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 14,
+    "fields": {
+        "name": "Научная фантастика",
+        "eng_name": "Sci-fi",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 15,
+    "fields": {
+        "name": "Фэнтези",
+        "eng_name": "Fantasy",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 16,
+    "fields": {
+        "name": "Экшен",
+        "eng_name": "Action",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsgenres",
+    "pk": 17,
+    "fields": {
+        "name": "Семейный",
+        "eng_name": "Family",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsstatus",
+    "pk": 1,
+    "fields": {
+        "name": "Закончен",
+        "eng_name": "Finished",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsstatus",
+    "pk": 2,
+    "fields": {
+        "name": "Выпускается",
+        "eng_name": "Ongoing",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonsstatus",
+    "pk": 3,
+    "fields": {
+        "name": "Анонс",
+        "eng_name": "Anons",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonstypes",
+    "pk": 1,
+    "fields": {
+        "name": "Сериал",
+        "eng_name": "TV",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonstypes",
+    "pk": 2,
+    "fields": {
+        "name": "Фильм",
+        "eng_name": "Film",
+        "description": ""
+    }
+},
+{
+    "model": "main.cartoonstypes",
+    "pk": 3,
+    "fields": {
+        "name": "Короткометражка",
+        "eng_name": "ShortFilm",
+        "description": ""
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 1,
+    "fields": {
+        "name": "Skybound Entertainment"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 2,
+    "fields": {
+        "name": "Point Grey Pictures"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 3,
+    "fields": {
+        "name": "Amazon MGM Studios"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 4,
+    "fields": {
+        "name": "Disney Television Animation"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 5,
+    "fields": {
+        "name": "Glitch Productions"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 6,
+    "fields": {
+        "name": "Nerds"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 7,
+    "fields": {
+        "name": "A24"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 8,
+    "fields": {
+        "name": "Touchstone Pictures"
+    }
+},
+{
+    "model": "main.studios",
+    "pk": 9,
+    "fields": {
+        "name": "Laika"
+    }
+},
+{
+    "model": "myList.myliststatus",
+    "pk": 1,
+    "fields": {
+        "name": "Просмотрено",
+        "priority_in_list": 2
+    }
+},
+{
+    "model": "myList.myliststatus",
+    "pk": 2,
+    "fields": {
+        "name": "Смотрю",
+        "priority_in_list": 1
+    }
+},
+{
+    "model": "myList.myliststatus",
+    "pk": 3,
+    "fields": {
+        "name": "Отложено",
+        "priority_in_list": 4
+    }
+},
+{
+    "model": "myList.myliststatus",
+    "pk": 4,
+    "fields": {
+        "name": "В планах",
+        "priority_in_list": 3
+    }
+},
+{
+    "model": "myList.myliststatus",
+    "pk": 5,
+    "fields": {
+        "name": "Брошено",
+        "priority_in_list": 5
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 1,
+    "fields": {
+        "value": 10,
+        "name": "Шедевр"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 2,
+    "fields": {
+        "value": 9,
+        "name": "Великолепно"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 3,
+    "fields": {
+        "value": 8,
+        "name": "Отлично"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 4,
+    "fields": {
+        "value": 7,
+        "name": "Очень хорошо"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 5,
+    "fields": {
+        "value": 6,
+        "name": "Хорошо"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 6,
+    "fields": {
+        "value": 5,
+        "name": "Нормально"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 7,
+    "fields": {
+        "value": 4,
+        "name": "Плохо"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 8,
+    "fields": {
+        "value": 3,
+        "name": "Очень плохо"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 9,
+    "fields": {
+        "value": 2,
+        "name": "Ужасно"
+    }
+},
+{
+    "model": "myList.mylistscores",
+    "pk": 10,
+    "fields": {
+        "value": 1,
+        "name": "Ужасающе"
+    }
+}
+]

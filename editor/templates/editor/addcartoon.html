@@ -1,0 +1,34 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Добавить мультсериал{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'editor/css/addcartoon.css' %}">
+<script src="{% static 'editor/js/addcartoon.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main>  
+    <span class="page-heading">Добавить мультсериал</span>
+    <form method="post" class="cartoon-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        {% for i in form%}
+        
+        <p class="label">
+            {{i.label}}
+        </p>
+        <p class="input">
+            {{i}}          
+        </p>
+        <p class="input-errors">
+            {{i.errors}}
+        </p>
+        {% endfor %}
+    
+        <button type="submit" class="submit-btn">Сохранить</button>
+    </form>
+
+</main>
+{% endblock content %}

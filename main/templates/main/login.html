@@ -1,0 +1,53 @@
+{% extends "main/layout.html" %}
+{% load static %}
+
+{% block title %}Вход{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+<form action="." method="post" class="regform-block">
+    <div class="inputs-block">
+        <h3>Вход</h3>
+        {% for i in log_form %}
+        <div class="form-line">
+            
+            <p class="label">
+                {{i.label}}
+            </p>
+            <p class="input">
+                {{i}}          
+            </p>
+            <p class="input-errors">
+                {{i.errors}}
+            </p>
+        </div>
+        {% endfor %}   
+        
+        {% if status == 'error' %}
+        <ul class="errorlist"><li>Неверный логин или пароль.</li></ul>
+        {% endif %}
+        <div class="s-block">
+            <input class="submit-reg" type="submit" value="Войти">
+        </div>
+        
+        <hr>
+
+        <div class="flex-box-links">
+            <a class="link" href="{% url 'register' %}">Нет аккаунта?</a>
+        
+            <!-- <a class="link" href="{% url 'register' %}">Забыли пароль?</a> -->
+        </div>
+        
+    </div>
+    
+    
+    {% csrf_token %}
+    
+</form>
+
+{% endblock %}
+

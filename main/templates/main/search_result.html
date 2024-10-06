@@ -1,0 +1,52 @@
+{% load static %}
+
+
+{% if search_result %}
+{% for cart in search_result %}
+    <a class="searched" href="{{cart.get_absolute_url}}">
+        {% if cart.cover %}
+        <img class="search-cover" src="{{cart.cover.url}}" alt="Обложка">
+        {% else %}
+        <img class="search-cover" src="{% static 'main/images/covernotfound.png' %}" alt="Обложка">
+        {% endif %}
+        
+
+        <div class="search-desc">
+            <span class="search-title">{{cart}}</span>
+            <div class="s-line">
+                <span class="s-line-type">Тип:</span>
+                <span class="s-line-ans">{{cart.type}}</span>
+                <span class="s-line-ans status-{{cart.status.id}}">{{cart.status}}</span>
+            </div>
+            <div class="s-line">
+                <span class="s-line-type">Жанры:</span>
+                <span class="s-line-ans">
+                    {% for g in cart.genres.all %}
+                        <span class="s-gen">{{g}}</span>
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="s-line">
+                <span class="s-line-type">Год выхода:</span>
+                <span class="s-line-ans">
+                    {{cart.start_year.year}}
+                </span>
+            </div>
+        </div>
+        
+        
+    </a>
+{% endfor %}
+{% else %}
+    <div style="width: 100%;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+    margin-top: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    padding: 5px;">
+        Ничего не найдено :(
+    </div>
+{% endif %}

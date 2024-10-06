@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Найстроки {{owner_user.username}}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/settings.css' %}">
+    <script src="{% static 'main/js/settings.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <script>
+        let settings = JSON.parse('{{ settings|escapejs }}');
+    </script>
+    <main>
+        <span class="page-heading">Пользователь {{owner_user.username}}</span>
+
+        <div class="ps-content">
+            <div class="settings-list">
+                <span class="heading">Настройки</span>
+                <div class="cbox">
+                    <input id="is_list_public" class="substituted" type="checkbox" aria-hidden="true" />
+                    <label for="is_list_public">Публичный cписок</label>
+                </div>
+                <div class="cbox">
+                    <input id="is_cover_in_list" class="substituted" type="checkbox" aria-hidden="true" />
+                    <label for="is_cover_in_list">Показывать обложки произведений в списке</label>
+                </div>
+
+                <button id="save-settings" onclick="saveSetting()">Сохранить</button>
+                <span class="success-save" style="color: rgb(0, 99, 0); display: none;">Настройки сохранены</span>
+            </div>
+
+
+            <div class="profile">
+                <span class="heading">Профиль</span>
+                <div class="user-info">
+                    <span class="p-key">Пользователь:</span>
+                    <span class="p-value">{{owner_user.username}}</span>
+                    <br>
+                    <span class="p-key">Почта:</span>
+                    <span class="p-value">{{owner_user.email}}</span>
+                    <br>
+                    <span class="p-key">Дата регистрации:</span>
+                    <span class="p-value">{{owner_user.date_joined}}</span>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

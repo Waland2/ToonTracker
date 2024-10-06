@@ -1,0 +1,217 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ data.rus_title }} / {{ data.type }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/cartoon_page.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<script>
+    let cartoonID = {{data.id}};
+    let userID = 0;
+    {% if request.user.is_authenticated %}
+        userID = {{request.user.id}};
+    {% endif %}
+</script>
+
+<div class="c-title">
+    <span>{{ data.rus_title }} / {{ data.eng_title }}</span>
+</div>
+<main>
+    
+    <aside class="left-aside">
+        {% if data.cover %}
+        <img src="{{data.cover.url}}" alt="Обложка" class="cartoon-cover">
+        {% else %}
+        <img class="cartoon-cover" src="{% static 'main/images/covernotfound.png' %}" alt="Обложка">
+        {% endif %}
+        
+        <div class="manage">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'editcartoon' data.id %}" style="padding: 3px;">Редактировать информацию</a>
+            {% else %}
+            <a href="#" class="auth-error" style="padding: 3px;">Редактировать информацию</a>
+            {% endif %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <div class="addlist-block">
+            <button onclick="addToList()" class="addlist-btn">
+                {% if ml_cartoon_info %}
+                Редактировать список    
+                {% else %}
+                Добавить в список
+                {% endif %}
+            </button>
+        </div>
+        <div class="ml-cancel hide">
+            <button onclick="hideList()" class="addlist-btn">Отмена</button>
+        </div>
+        {% else %}
+        <div class="addlist-block">
+            <button class="addlist-btn auth-error">Добавить в список</button>
+        </div>
+        {% endif %}
+
+
+        <div class="addlist-option hide">
+            <span class="al-key">
+                Статус
+            </span>
+            <select name="ml-status" id="ml-status">
+                {% for i in ml_status %}
+                <option {% if i.id == ml_cartoon_info.watch_status.id %}selected{% endif %} value="{{i.id}}">
+                    {{i}}
+                </option>
+                {% endfor %}
+            </select>
+
+            <span class="al-key">
+                Оценка
+            </span>
+            <select name="ml-score" id="ml-score">
+                <option value="null">-</option>
+                
+                {% for i in ml_scores %}
+                <option {% if i.id == ml_cartoon_info.score.id %}selected{% endif %} value="{{i.id}}">{{i}}</option>
+                {% endfor %}
+            </select>
+
+            <span class="al-key">Комментарий</span>
+            <textarea name="ml-comment" id="ml-comment">{% if ml_cartoon_info.comment %}{{ml_cartoon_info.comment}}{% endif %}
+            </textarea>
+
+            <div class="al-buttons">
+                <button id="al-submit" onclick="ml_save()">Сохранить</button>
+                <button id="al-delete" onclick="ml_delete()">Удалить</button>
+            </div>
+        </div>
+    </aside>
+
+    <section class="c-description">
+        
+        <div class="info-and-rating-block">
+            <div class="c-info">
+                <span class="heading">информация</span>
+                
+                {% if data.type %}
+                <div class="line">
+                    <span class="info-type">Тип:</span>
+                    <span class="info-ans">{{data.type}}</span>
+                </div>
+                {% endif %}
+
+                {% if data.status %}
+                <div class="line">
+                    <span class="info-type">Статус:</span>
+                    <span class="info-ans status-{{data.status.id}}">{{data.status}}</span>
+                </div>
+                {% endif %}
+
+                {% if data.status %}
+                <div class="line">
+                    {% with start_year=data.start_year end_year=data.end_year %}
+                    {% if not end_year %}
+                        {% if data.status.name == "Анонс" %}
+                        <span class="info-type">Анонсированная дата:</span>
+                        <span class="info-ans">
+                            {% if start_year %}
+                                {{start_year}}
+                            {% else %}
+                                Неизвестно
+                            {% endif %}
+                        </span>
+                        {% elif data.type.name == "Сериал"%}
+                            <span class="info-type">Даты выхода:</span>
+                            <span class="info-ans">
+                                с {{ start_year }}
+                            </span>
+                        {% else %}
+                            <span class="info-type">Дата выхода:</span>
+                            <span class="info-ans">{{ start_year }}</span>
+                        {% endif %}
+                    {% else %}
+                        <span class="info-type">Даты выхода:</span>
+                        <span class="info-ans">с {{start_year}} по {{end_year}}</span>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                {% endif %}
+
+
+                {% if data.genres %}
+                <div class="line">
+                    <span class="info-type">Жанры:</span>
+                    <span class="info-ans">
+                        {% for g in data.genres.all %}
+                            <a href="{{g.get_absolute_url}}" class="gen">{{g}}</a>
+                        {% endfor %}
+                    </span>
+                </div>
+                {% endif %}
+
+
+                {% if data.studios %}
+                <div class="line">
+                    <span class="info-type">Студии:</span>
+                    <span class="info-ans">
+                        {% for i in data.studios.all %}
+                            <a href="{{i.get_absolute_url}}" class="stud">
+                                {{i}}
+                            </a>
+                        {% endfor %}
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if data.type.name == "Сериал" and data.status.name != "Анонс" %}
+
+                <div class="line">
+                    <span class="info-type">Выпущено:</span>
+                    <span class="info-ans">
+                        {{data.number_of_seasons}} {{seasons_word}} ({{data.number_of_series}} {{series_word}})
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="c-rating">
+                <span class="heading">Рейтинг</span>
+                {% if data.rating %}
+                    <div class="rating-block">
+                        <div class="circle">
+                            <span class="score-in-circle">
+                                {{ data.rating|stringformat:".2f" }}
+                            </span>                            
+                        </div>
+                        <span style="font-size: 12px;
+                        margin-bottom: 10px;">({{data.number_of_ratings}} оценок)</span>
+                    </div>
+                {% else %}
+                    Не определен
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="about-and-other">
+            <div class="c-about">
+                <span class="heading">Описание</span>
+                {% if data.description %}
+                <p>{{ data.description|linebreaksbr }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </section>
+
+    <aside>
+
+    </aside>
+
+
+    <script src="{% static 'main/js/cartoon_page.js' %}"></script>
+</main>
+{% endblock %}

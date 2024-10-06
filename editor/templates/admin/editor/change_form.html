@@ -1,0 +1,10 @@
+{% extends "admin/change_form.html" %}
+
+{% block object-tools %}
+    {{ block.super }}
+    {% if original.pk %}
+    <a class="button" href="{% url 'acceptrequest' original.pk %}">Принять</a>
+    <a class="button" href="{% url 'rejectrequest' original.pk %}">Отклонить</a>
+    <a class="button" href="{% url 'blockuser' original.user.pk %}">Заблокировать Пользователя</a>
+    {% endif %}
+{% endblock %}
